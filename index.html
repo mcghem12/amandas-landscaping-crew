@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Amanda’s Landscaping Crew</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --green: #1f3d2b;
+      --green-light: #2f5a3d;
+      --beige: #e8dcc2;
+      --gold: #c8a96a;
+      --charcoal: #2a2a2a;
+      --offwhite: #f9f5ee;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f4f1ea;
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--green), #143021);
+      color: white;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-wrap img {
+      height: 52px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: #fdfaf4;
+      text-decoration: none;
+      margin-left: 1rem;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2rem;
+      padding: 3.5rem 8vw 3rem;
+      background: radial-gradient(circle at top left, #f0e4cf 0, #f4f1ea 45%, #e2d6c0 100%);
+    }
+
+    .hero-main h1 {
+      font-size: clamp(2.2rem, 3vw, 2.8rem);
+      color: var(--green);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-main p.sub {
+      font-size: 1.05rem;
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.8rem;
+      color: var(--green);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      margin-bottom: 1rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .btn-primary:hover {
+      background: var(--green-light);
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: #5b5246;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 1.25rem;
+      padding: 1.5rem 1.4rem;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .hero-card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--green);
+    }
+
+    .hero-card ul {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .hero-card li {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-card li span {
+      font-size: 1rem;
+    }
+
+    section {
+      padding: 3rem 8vw;
+    }
+
+    section:nth-of-type(odd) {
+      background: #fdfaf4;
+    }
+
+    h2.section-title {
+      font-size: 1.6rem;
+      color: var(--green);
+      margin-bottom: 1.5rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.25rem 1.2rem;
+      border: 1px solid #e3d7c5;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    .service-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 0.35rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+      color: var(--charcoal);
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: #5b5246;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .portfolio-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.1rem 1.1rem 1.2rem;
+      border: 1px solid #e3d7c5;
+    }
+
+    .portfolio-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #8b7b64;
+      margin-bottom: 0.25rem;
+    }
+
+    .portfolio-card strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.15rem;
+      color: var(--charcoal);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+      color: #4a4136;
+    }
+
+    .team-list {
+      list-style: none;
+      background: white;
+      border-radius: 1.1rem;
+      padding: 1.3rem 1.2rem;
+      border: 1px solid #e3d7c5;
+    }
+
+    .team-list li {
+      margin-bottom: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    .team-role {
+      font-weight: 600;
+      color: var(--green);
+    }
+
+    .gift-card {
+      max-width: 640px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 1.4rem;
+      padding: 1.8rem 1.6rem 1.9rem;
+      border: 1px solid #e3d7c5;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
+
+    .gift-card h3 {
+      font-size: 1.3rem;
+      color: var(--green);
+      margin-bottom: 0.75rem;
+    }
+
+    .gift-card p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      color: #4a4136;
+    }
+
+    .gift-list {
+      list-style: none;
+      text-align: left;
+      margin: 0.75rem auto 1.25rem;
+      max-width: 420px;
+      font-size: 0.9rem;
+      color: #4a4136;
+    }
+
+    .gift-list li::before {
+      content: "• ";
+      color: var(--gold);
+    }
+
+    footer {
+      padding: 1.5rem 8vw 2rem;
+      background: #1c2c23;
+      color: #d9d1c4;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    footer span {
+      display: block;
+      margin-top: 0.25rem;
+      color: #a89c8a;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .about-layout {
+        grid-template-columns: 1fr;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-wrap">
+      <!-- Swap src with your exported logo file path -->
+      <img src="amandas-landscaping-crew-logo.png" alt="Amanda’s Landscaping Crew logo" />
+      <div class="logo-text">Amanda’s Landscaping Crew</div>
+    </div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#about">About</a>
+      <a href="#gift">Gift Certificate</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-main">
+        <div class="hero-badge">
+          <span>🎉</span>
+          <span>50th Birthday Landscaping Takeover</span>
+        </div>
+        <h1>Celebrating Amanda’s 50th with a full‑scale family landscaping transformation.</h1>
+        <p class="sub">
+          Your yard makeover is officially underway — powered by your husband, your children, and one extremely dedicated dog.
+        </p>
+        <div class="hero-cta">
+          <button class="btn-primary" onclick="document.getElementById('gift').scrollIntoView({behavior:'smooth'})">
+            Redeem Your Birthday Yard Transformation
+          </button>
+          <span class="hero-note">You relax. We dig, haul, plant, and mulch.</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h2>Your Crew for the Day</h2>
+        <ul>
+          <li><span>🌼</span> Complete flower bed & shrub overhaul</li>
+          <li><span>🌱</span> Lawn mowing, edging, and clean lines</li>
+          <li><span>🪵</span> Mulch, planting, and fresh design</li>
+          <li><span>🐾</span> On‑site supervision by Peppa</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <h2 class="section-title">The Official 50th Birthday Landscaping Package</h2>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-tag">Birthday Exclusive</div>
+          <h3>Complete Flower Bed & Shrub Overhaul</h3>
+          <p>
+            The centerpiece of your 50th birthday gift: a full removal and replanting of all flower beds and shrubs.
+            Old plants are cleared, soil is refreshed, and new flowers and shrubs are installed to your taste — designed
+            by Tessa, powered by Mike, Nate, and Noah, and supervised by Peppa.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <h3>Lawn Mowing (Mike’s Specialty)</h3>
+          <p>
+            Precision mowing performed by your devoted husband. Includes straight lines, diagonal lines, and the
+            occasional “creative interpretation.”
+          </p>
+        </article>
+
+        <article class="service-card">
+          <h3>Weeding & Garden Cleanup</h3>
+          <p>
+            Hand‑pulled weeds, debris removal, and light complaining from Nate and Noah. Guaranteed improvement or at
+            least a good story.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <h3>Planting & Bed Refresh</h3>
+          <p>
+            Flowers and plants curated to match your impeccable taste, with planting executed by the boys under Tessa’s
+            watchful eye.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <h3>Mulching (Full‑Crew Operation)</h3>
+          <p>
+            Hauling, spreading, and debating how many bags are needed. Mulch color chosen by Amanda, because obviously.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <h3>Hedge Trimming</h3>
+          <p>
+            Straight lines, clean edges, and a 50% chance someone says, “Oops.” Performed by Mike and sons.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <h3>On‑Site Supervision (Peppa)</h3>
+          <p>
+            Ensures all workers stay on task, provides emotional support, and occasionally steps directly into the
+            flower bed.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <h3>Birthday Girl Premium Add‑On</h3>
+          <p>
+            Amanda points. The crew does it. No questions asked.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <h2 class="section-title">Work in Progress: The Birthday Transformation</h2>
+
+      <div class="portfolio-grid">
+        <article class="portfolio-card">
+          <div class="portfolio-label">Flower Bed & Shrub Overhaul</div>
+          <strong>Before:</strong>
+          <span>Shrubs that have seen things.</span><br />
+          <strong>During:</strong>
+          <span>“Why is this root the size of a small tree?”</span><br />
+          <strong>After:</strong>
+          <span>A masterpiece. Amanda‑approved.</span>
+        </article>
+
+        <article class="portfolio-card">
+          <div class="portfolio-label">Yard Cleanup</div>
+          <strong>Before:</strong>
+          <span>A yard in need.</span><br />
+          <strong>After:</strong>
+          <span>A yard in progress. Please check back after snacks.</span>
+        </article>
+
+        <article class="portfolio-card">
+          <div class="portfolio-label">Mulch & Beds</div>
+          <strong>Before:</strong>
+          <span>Mulch untouched.</span><br />
+          <strong>After:</strong>
+          <span>Mulch spread. Backs destroyed.</span>
+        </article>
+
+        <article class="portfolio-card">
+          <div class="portfolio-label">Weeds & Energy Levels</div>
+          <strong>Before:</strong>
+          <span>Weeds thriving.</span><br />
+          <strong>After:</strong>
+          <span>Weeds defeated. For now.</span><br />
+          <strong>Bonus:</strong>
+          <span>Peppa supervising like she’s filming her own home‑improvement show.</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-title">About Amanda’s Landscaping Crew</h2>
+
+      <div class="about-layout">
+        <div class="about-text">
+          <p>
+            Our mission is simple: give Amanda the best 50th birthday gift imaginable — a beautiful yard, a day of
+            relaxation, and a team of family members working together without (too much) complaining.
+          </p>
+          <p>
+            Our biggest project to date is a complete flower bed and shrub overhaul, a labor of love, sweat, and several
+            “Are we done yet?” moments. Every shovel of soil and every planted flower is our way of saying: we adore you.
+          </p>
+        </div>
+
+        <ul class="team-list">
+          <li>
+            <span class="team-role">Mike — Founder & Lead Laborer</span><br />
+            Specializes in heavy lifting, power tools, and pretending he read the instructions.
+          </li>
+          <li>
+            <span class="team-role">Nate — Senior Yard Technician</span><br />
+            Brings enthusiasm, questionable technique, and a strong desire to finish before dinner.
+          </li>
+          <li>
+            <span class="team-role">Noah — Junior Yard Technician</span><br />
+            Fast, efficient, and easily distracted by anything with wheels.
+          </li>
+          <li>
+            <span class="team-role">Tessa — Creative Director</span><br />
+            Ensures all aesthetic decisions meet Amanda’s standards. Frequently says, “No, not like that.”
+          </li>
+          <li>
+            <span class="team-role">Peppa — Supervisor</span><br />
+            On‑site at all times. Barks orders. Literally.
+          </li>
+          <li>
+            <span class="team-role">Amanda — CEO & Only Client</span><br />
+            Visionary. Decision‑maker. Birthday queen.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- GIFT CERTIFICATE -->
+    <section id="gift">
+      <h2 class="section-title">Gift Certificate</h2>
+
+      <div class="gift-card">
+        <h3>Happy 50th Birthday, Amanda!</h3>
+        <p>
+          This certificate entitles you to a full‑scale landscaping transformation, performed with love by your family.
+        </p>
+        <ul class="gift-list">
+          <li>Complete flower bed & shrub overhaul</li>
+          <li>Full yard cleanup</li>
+          <li>Fresh mulch and new plantings</li>
+          <li>Hedge trimming and lawn mowing</li>
+          <li>Edging and weed removal</li>
+          <li>Unlimited pointing and directing</li>
+          <li>Zero labor on your part</li>
+          <li>100% love from your crew</li>
+        </ul>
+        <p>
+          Valid for the entire 2026 landscaping season. Redeemable immediately. No expiration. No refunds. No take‑backs.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Amanda’s Landscaping Crew — Family‑Owned, Amanda‑Focused  
+    <span>Designed as a 50th birthday gift from Mike, Nate, Noah, Tessa, and Peppa.</span>
+  </footer>
+
+</body>
+</html>
