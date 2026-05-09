@@ -252,6 +252,19 @@
       color: #4a4136;
     }
 
+    .team-list.with-portraits .team-member {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .team-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
     .team-list {
       list-style: none;
       background: white;
@@ -531,51 +544,75 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <h2 class="section-title">About Amanda’s Landscaping Crew</h2>
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-title">About Amanda’s Landscaping Crew</h2>
 
-      <div class="about-layout">
-        <div class="about-text">
-          <p>
-            Our mission is simple: give Amanda the best 50th birthday gift imaginable — a beautiful yard, a day of
-            relaxation, and a team of family members working together without (too much) complaining.
-          </p>
-          <p>
-            Our biggest project to date is a complete flower bed and shrub overhaul, a labor of love, sweat, and several
-            “Are we done yet?” moments. Every shovel of soil and every planted flower is our way of saying: we adore you.
-          </p>
+  <div class="about-layout">
+    <div class="about-text">
+      <p>
+        Our mission is simple: give Amanda the best 50th birthday gift imaginable — a beautiful yard, a day of
+        relaxation, and a team of family members working together without (too much) complaining.
+      </p>
+      <p>
+        Our biggest project to date is a complete flower bed and shrub overhaul, a labor of love, sweat, and several
+        “Are we done yet?” moments. Every shovel of soil and every planted flower is our way of saying: we adore you.
+      </p>
+    </div>
+
+    <ul class="team-list with-portraits">
+
+      <li class="team-member">
+        <img src="images/mike.jpg" alt="Mike Pixar Portrait" class="team-photo" />
+        <div>
+          <span class="team-role">Mike — Founder & Lead Laborer</span><br />
+          Specializes in heavy lifting, power tools, and pretending he read the instructions.
         </div>
+      </li>
 
-        <ul class="team-list">
-          <li>
-            <span class="team-role">Mike — Founder & Lead Laborer</span><br />
-            Specializes in heavy lifting, power tools, and pretending he read the instructions.
-          </li>
-          <li>
-            <span class="team-role">Nate — Senior Yard Technician</span><br />
-            Brings enthusiasm, questionable technique, and a strong desire to finish before hitting the gym and sauna.
-          </li>
-          <li>
-            <span class="team-role">Noah — Senior Yard Technician</span><br />
-            Fast, efficient, will do all the running around.
-          </li>
-          <li>
-            <span class="team-role">Tessa — Creative Director</span><br />
-            Ensures all aesthetic decisions meet Amanda’s standards. Frequently says, “No, not like that.”
-          </li>
-          <li>
-            <span class="team-role">Peppa, Ginger, Ellie — Supervisors</span><br />
-            On‑site at all times. Always watching.
-          </li>
-          <li>
-            <span class="team-role">Amanda — CEO & Only Client</span><br />
-            Visionary. Decision‑maker. Birthday queen.
-          </li>
-        </ul>
-      </div>
-    </section>
+      <li class="team-member">
+        <img src="images/nate.jpg" alt="Nate Pixar Portrait" class="team-photo" />
+        <div>
+          <span class="team-role">Nate — Senior Yard Technician</span><br />
+          Brings enthusiasm, questionable technique, and a strong desire to finish before hitting the gym and sauna.
+        </div>
+      </li>
 
+      <li class="team-member">
+        <img src="images/noah.jpg" alt="Noah Pixar Portrait" class="team-photo" />
+        <div>
+          <span class="team-role">Noah — Senior Yard Technician</span><br />
+          Fast, efficient, will do all the running around.
+        </div>
+      </li>
+
+      <li class="team-member">
+        <img src="images/tessa.jpg" alt="Tessa Pixar Portrait" class="team-photo" />
+        <div>
+          <span class="team-role">Tessa — Creative Director</span><br />
+          Ensures all aesthetic decisions meet Amanda’s standards. Frequently says, “No, not like that.”
+        </div>
+      </li>
+
+      <li class="team-member">
+        <img src="images/animals.jpg" alt="Animal Trio Pixar Portrait" class="team-photo" />
+        <div>
+          <span class="team-role">Peppa, Ginger, Ellie — Supervisors</span><br />
+          On‑site at all times. Always watching.
+        </div>
+      </li>
+
+      <li class="team-member">
+        <img src="images/amanda.jpg" alt="Amanda Pixar Portrait" class="team-photo" />
+        <div>
+          <span class="team-role">Amanda — CEO & Only Client</span><br />
+          Visionary. Decision‑maker. Birthday queen.
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</section>
     <!-- GIFT CERTIFICATE -->
     <section id="gift">
       <h2 class="section-title">Gift Certificate</h2>
