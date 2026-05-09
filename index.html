@@ -595,7 +595,13 @@
         style="border:1px solid #d4c7b6; border-radius:12px;">
       </iframe>
     </section>
-
+<script>
+  // Force Safari (and other aggressive browsers) to reload the sheet every time
+  window.addEventListener("load", function() {
+    const iframe = document.getElementById("feedbackFrame");
+    iframe.src = iframe.src + "&cb=" + new Date().getTime();
+  });
+</script>
 <script>
 document.getElementById("feedbackForm").addEventListener("submit", async function(e) {
   e.preventDefault();
