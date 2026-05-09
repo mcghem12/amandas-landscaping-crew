@@ -567,6 +567,59 @@
         </p>
       </div>
     </section>
+    <section id="feedback">
+      <h2 class="section-title">Feedback</h2>
+      <iframe 
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTxLWIgiCxaSeWQX_2tMaEukXQ9KCQMFEHXmrxfwHJVeADCICbpLcOxO3OjbJR6gR-MrxVJXq6JePMv/pubhtml?widget=true&amp;headers=false"
+        width="100%" 
+        height="500"
+        style="border:1px solid #d4c7b6; border-radius:12px;">
+      </iframe>
+    </section>
+
+    <section id="request">
+      <h2 class="section-title">Request a Service</h2>
+
+      <form id="feedbackForm">
+        <label>Your Name</label>
+          <input type="text" name="name" required>
+
+        <label>Your Email</label>
+          <input type="email" name="email" required>
+
+        <label>Your Request</label>
+          <textarea name="message" rows="5" required></textarea>
+
+        <button type="submit" class="btn-primary">Submit</button>
+      </form>
+
+      <p id="formStatus" style="margin-top:1rem; color:var(--green); font-weight:600;"></p>
+    </section>
+
+<script>
+document.getElementById("feedbackForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value
+  };
+
+  const response = await fetch("https://script.google.com/macros/s/AKfycbzuXUXyhq1f42HDjvqqDUGAh1dUDWe42mhBiU7uxWyIwN1RIgIHnotOS3foBbIdAV4m/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  });
+
+  if (response.ok) {
+    document.getElementById("formStatus").innerText = "Request submitted!";
+    form.reset();
+  } else {
+    document.getElementById("formStatus").innerText = "Something went wrong.";
+  }
+});
+</script>
   </main>
 
   <footer>
