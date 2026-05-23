@@ -380,6 +380,34 @@
         flex-wrap: wrap;
       }
     }
+    #gallery {
+  margin-top: 4rem;
+}
+
+.gallery-intro {
+  max-width: 600px;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
   </style>
 </head>
 <body>
@@ -397,6 +425,7 @@
       <a href="#gift">Gift Certificate</a>
       <a href="#request">Request a Service</a>
       <a href="#feedback">Feedback</a>
+      <a href="#gallery">Gallery</a>
     </nav>
   </header>
 
@@ -695,6 +724,37 @@ document.getElementById("feedbackForm").addEventListener("submit", async functio
   }
 });
 </script>
+    <!-- PROJECT GALLERY -->
+<section id="gallery">
+  <h2 class="section-title">Project Gallery</h2>
+
+  <p class="gallery-intro">
+    A look at the work in progress.
+  </p>
+
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="images/project-before-1.jpg" alt="Before photo of flower bed" />
+      <p class="caption">Before: Overgrown shrubs and tired soil.</p>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/project-after-1.jpg" alt="After photo of flower bed" />
+      <p class="caption">After: Fresh mulch, new plants, and clean edges.</p>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/project-progress-1.jpg" alt="Progress photo" />
+      <p class="caption">Progress: The crew in action.</p>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/project-detail-1.jpg" alt="Close-up of new plants" />
+      <p class="caption">Details: Pops of color and healthy new growth.</p>
+    </div>
+  </div>
+</section>
+
   </main>
 
   <footer>
