@@ -732,18 +732,7 @@ document.getElementById("feedbackForm").addEventListener("submit", async functio
   }
 });
 </script>
-<script>
-document.querySelectorAll('video[data-generate-thumbnail]').forEach(video => {
-  video.addEventListener('loadeddata', () => {
-    const canvas = document.createElement('canvas')
-    canvas.width = video.videoWidth
-    canvas.height = video.videoHeight
-    canvas.getContext('2d').drawImage(video, 0, 0)
-    video.setAttribute('poster', canvas.toDataURL('image/jpeg'))
-  })
-})
-</script>
-    <!-- PROJECT GALLERY -->
+<!-- PROJECT GALLERY -->
 <section id="gallery">
   <h2 class="section-title">Project Gallery</h2>
 
@@ -825,6 +814,23 @@ document.querySelectorAll('video[data-generate-thumbnail]').forEach(video => {
     Amanda’s Landscaping Crew — Family‑Owned, Amanda‑Focused  
     <span>Designed as a 50th birthday gift from Mike, Nate, Noah, Tessa, and the animals</span>
   </footer>
+<script>
+document.querySelectorAll('video[data-generate-thumbnail]').forEach(video => {
+  video.addEventListener('loadeddata', () => {
+    // Wait a moment to ensure the frame is ready
+    setTimeout(() => {
+      const canvas = document.createElement('canvas')
+      canvas.width = video.videoWidth
+      canvas.height = video.videoHeight
+
+      const ctx = canvas.getContext('2d')
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
+
+      video.setAttribute('poster', canvas.toDataURL('image/jpeg'))
+    }, 150)
+  })
+})
+</script>
 
 </body>
 </html>
