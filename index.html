@@ -732,6 +732,17 @@ document.getElementById("feedbackForm").addEventListener("submit", async functio
   }
 });
 </script>
+<script>
+document.querySelectorAll('video[data-generate-thumbnail]').forEach(video => {
+  video.addEventListener('loadeddata', () => {
+    const canvas = document.createElement('canvas')
+    canvas.width = video.videoWidth
+    canvas.height = video.videoHeight
+    canvas.getContext('2d').drawImage(video, 0, 0)
+    video.setAttribute('poster', canvas.toDataURL('image/jpeg'))
+  })
+})
+</script>
     <!-- PROJECT GALLERY -->
 <section id="gallery">
   <h2 class="section-title">Project Gallery</h2>
@@ -791,14 +802,14 @@ document.getElementById("feedbackForm").addEventListener("submit", async functio
       <p class="caption">Momma duck showed up and waited patiently for us to clear out.</p>
     </div>
     <div class="gallery-item">
-      <video controls class="gallery-video" preload="metadata">
+      <video controls class="gallery-video" data-generate-thumbnail>
         <source src="videos/ducks_1.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <p class="caption">They grow up so fast...</p>
     </div>
     <div class="gallery-item">
-      <video controls class="gallery-video" preload="metadata">
+      <video controls class="gallery-video" data-generate-thumbnail>
         <source src="videos/ducks_2.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
